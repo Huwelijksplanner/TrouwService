@@ -96,6 +96,7 @@ components:
             - omzetting
           example: huwelijk
         partners:
+          x-context: schema.conduction.nl/assent
           type: array
           description: 'De in dit huwelijk betrokken partners, te verwijzen naar het instemmingen registers'
           minItems: 1
@@ -107,6 +108,7 @@ components:
           format: url
           description: Verwijzing naar een locatie boeking in de agendaservice (dus niet de locatie zelf)
         ambtenaar:
+          x-context: schema.conduction.nl/assent
           type: string
           format: url
           description: Verwijzing naar een ambtenaar boeking in de agendaservice (dus niet de ambtenaar zelf)
@@ -126,6 +128,7 @@ components:
             type: object
             properties:
               partner:
+                x-context: schema.conduction.nl/assent
                 type: string
                 description: |-
                   De partner waarvoor deze getuigen geteuige is, een getuige kan maar voor één partner getuigen en iedere partner kan maximaal 2 getuigen hebben. Voor een valide huwelijk heeft elke partner minimaal één getuigen nodig.
@@ -133,6 +136,7 @@ components:
                   Partner wordt hierbij aangeduide al een instemming
                 format: url
               instemming:
+                x-context: schema.conduction.nl/assent
                 type: string
                 format: url
                 description: De instemming van deze getuige in het IRC
@@ -140,6 +144,7 @@ components:
           type: object
           properties:
             partners:
+              x-context: schema.conduction.nl/assent
               type:
                 - string
                 - boolean
@@ -152,6 +157,7 @@ components:
               description: Geeft true indien geen problemen of een string indien wel een probleem. Daarbij bevat de string dan de probleem beschrijving
               example: u heeft nog geen locatie gekozen
             ambetenaar:
+              x-context: schema.conduction.nl/assent
               type:
                 - string
                 - boolean
@@ -169,6 +175,7 @@ components:
                 - boolean
               description: Geeft true indien geen problemen of een string indien wel een probleem. Daarbij bevat de string dan de probleem beschrijving
             getuigen:
+              x-context: schema.conduction.nl/assent
               type:
                 - string
                 - boolean
