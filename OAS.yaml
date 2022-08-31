@@ -105,12 +105,10 @@ components:
             type: string
         locatie:
           type: string
-          format: url
           description: Verwijzing naar een locatie boeking in de agendaservice (dus niet de locatie zelf)
         ambtenaar:
-          x-context: schema.conduction.nl/assent
           type: string
-          format: url
+          x-context: schema.conduction.nl/assent
           description: Verwijzing naar een ambtenaar boeking in de agendaservice (dus niet de ambtenaar zelf)
         moment:
           type: string
@@ -128,17 +126,15 @@ components:
             type: object
             properties:
               partner:
-                x-context: schema.conduction.nl/assent
                 type: string
+                x-context: schema.conduction.nl/assent
                 description: |-
                   De partner waarvoor deze getuigen geteuige is, een getuige kan maar voor één partner getuigen en iedere partner kan maximaal 2 getuigen hebben. Voor een valide huwelijk heeft elke partner minimaal één getuigen nodig.
 
                   Partner wordt hierbij aangeduide al een instemming
-                format: url
               instemming:
-                x-context: schema.conduction.nl/assent
                 type: string
-                format: url
+                x-context: schema.conduction.nl/assent
                 description: De instemming van deze getuige in het IRC
         checklist:
           type: object
@@ -195,11 +191,9 @@ components:
           readOnly: true
         order:
           type: string
-          format: url
           description: Verwijzing naar de bij dit huwelijk horende order in het ORC
         zaak:
           type: string
-          format: url
           description: Verwijzing naar het bij dit huwelijk horende zaak in het ZRC
         instemmingGemeente:
           type: string
