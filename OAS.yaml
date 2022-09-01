@@ -120,73 +120,56 @@ components:
           items:
             type: string
         getuigen:
-          type: array
           description: 'De bij dit huwelijk behorende getuigen, minimaal 1 en maximaal 2 per partner'
+          type: array
           items:
             type: object
             properties:
               partner:
-                type: string
                 x-context: schema.conduction.nl/assent
+                type: string
                 description: |-
                   De partner waarvoor deze getuigen geteuige is, een getuige kan maar voor één partner getuigen en iedere partner kan maximaal 2 getuigen hebben. Voor een valide huwelijk heeft elke partner minimaal één getuigen nodig.
-
                   Partner wordt hierbij aangeduide al een instemming
               instemming:
-                type: string
                 x-context: schema.conduction.nl/assent
+                type: string
                 description: De instemming van deze getuige in het IRC
         checklist:
           type: object
           properties:
             partners:
               x-context: schema.conduction.nl/assent
-              type:
-                - string
-                - boolean
+              type: string
               description: Geeft true indien geen problemen of een string indien wel een probleem. Daarbij bevat de string dan de probleem beschrijving
               example: nog niet alle partners hebben ingestemd met het huwelijk
             locatie:
-              type:
-                - string
-                - boolean
+              type: string
               description: Geeft true indien geen problemen of een string indien wel een probleem. Daarbij bevat de string dan de probleem beschrijving
               example: u heeft nog geen locatie gekozen
             ambetenaar:
               x-context: schema.conduction.nl/assent
-              type:
-                - string
-                - boolean
+              type: string
               description: Geeft true indien geen problemen of een string indien wel een probleem. Daarbij bevat de string dan de probleem beschrijving
               example: u heeft nog geen trouw ambtenaar gekozen
             moment:
-              type:
-                - string
-                - boolean
+              type: string
               description: Geeft true indien geen problemen of een string indien wel een probleem. Daarbij bevat de string dan de probleem beschrijving
               example: u heeft nog geen moment van huwelijk/partnerschap gekozen
             producten:
-              type:
-                - string
-                - boolean
+              type: string
               description: Geeft true indien geen problemen of een string indien wel een probleem. Daarbij bevat de string dan de probleem beschrijving
             getuigen:
               x-context: schema.conduction.nl/assent
-              type:
-                - string
-                - boolean
+              type: string
               description: Geeft true indien geen problemen of een string indien wel een probleem. Daarbij bevat de string dan de probleem beschrijving
               example: een van de partners heeft te weinig getuigen
             order:
-              type:
-                - string
-                - boolean
+              type: string
               description: Geeft true indien geen problemen of een string indien wel een probleem. Daarbij bevat de string dan de probleem beschrijving
               example: u heeft uw huwelijk nog niet betaald
             zaak:
-              type:
-                - string
-                - boolean
+              type: string
               description: Geeft true indien geen problemen of een string indien wel een probleem. Daarbij bevat de string dan de probleem beschrijving
           readOnly: true
         order:
