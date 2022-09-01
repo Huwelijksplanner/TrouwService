@@ -139,7 +139,6 @@ components:
           type: object
           properties:
             partners:
-              x-context: schema.conduction.nl/assent
               type: string
               description: Geeft true indien geen problemen of een string indien wel een probleem. Daarbij bevat de string dan de probleem beschrijving
               example: nog niet alle partners hebben ingestemd met het huwelijk
@@ -148,7 +147,6 @@ components:
               description: Geeft true indien geen problemen of een string indien wel een probleem. Daarbij bevat de string dan de probleem beschrijving
               example: u heeft nog geen locatie gekozen
             ambetenaar:
-              x-context: schema.conduction.nl/assent
               type: string
               description: Geeft true indien geen problemen of een string indien wel een probleem. Daarbij bevat de string dan de probleem beschrijving
               example: u heeft nog geen trouw ambtenaar gekozen
@@ -160,7 +158,6 @@ components:
               type: string
               description: Geeft true indien geen problemen of een string indien wel een probleem. Daarbij bevat de string dan de probleem beschrijving
             getuigen:
-              x-context: schema.conduction.nl/assent
               type: string
               description: Geeft true indien geen problemen of een string indien wel een probleem. Daarbij bevat de string dan de probleem beschrijving
               example: een van de partners heeft te weinig getuigen
