@@ -104,6 +104,7 @@ components:
           items:
             type: string
         locatie:
+          x-context: schema.org/Accommodation
           type: string
           description: Verwijzing naar een locatie boeking in de agendaservice (dus niet de locatie zelf)
         ambtenaar:
