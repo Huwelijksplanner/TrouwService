@@ -74,6 +74,21 @@ paths:
       responses:
         '200':
           description: OK
+    patch:
+      summary: ''
+      operationId: patch-huwelijken-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/huwelijk'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/huwelijk'
 components:
   schemas:
     huwelijk:
@@ -134,7 +149,7 @@ components:
           type: array
           description: De bij dit huwelijk gekozen extra producten
           items:
-            type: string
+            $ref: '#/components/schemas/Overige-Objecten_SDG'
         checklist:
           type: object
           properties:
