@@ -77,7 +77,7 @@ paths:
 components:
   schemas:
     huwelijk:
-      title: huwelijk
+      title: Huwelijk
       x-stoplight:
         id: ktufw11iduvhw
       type: object
@@ -87,30 +87,45 @@ components:
           format: uuid
           description: |
             De unieke identificatie van dit huwelijks
-        type:
-          type: string
-          description: Het type van dit huwelijk
-          enum:
-            - huwelijk
-            - partnerschap
-            - omzetting
-          example: huwelijk
+          readOnly: true
         partners:
           x-context: schema.conduction.nl/assent
+          description: 'De in dit huwelijk betrokken partners, bestaande uit hun instemmming (Assent) en getuigen.'
           type: array
-          description: 'De in dit huwelijk betrokken partners, te verwijzen naar het instemmingen registers'
-          minItems: 1
-          maxItems: 2
           items:
-            type: string
+            $ref: '#/components/schemas/Overige-Objecten_Assent'
+        getuigen:
+          type: array
+          maxItems: 4
+          uniqueItems: true
+          items:
+            $ref: '#/components/schemas/Overige-Objecten_Assent'
+        type:
+          $ref: '#/components/schemas/Overige-Objecten_SDG'
+          description: 'Het juridische type van dit huwelijk zo als opgehaald uit de SDG catalogus, zijnde huwelijk, parnterschap of omzetting'
+          x-context: schema.conduction.nl/SDGProduct
+        ceremonie:
+          $ref: '#/components/schemas/Overige-Objecten_SDG'
+          description: 'De cermonie (manier) waarop het huwelijk wordt volgrokken. Bijvoorbeeld gratis, flits, eenvoudig of uitgebreid.'
+          x-context: schema.conduction.nl/SDGProduct
         locatie:
+          $ref: '#/components/schemas/Overige-Objecten_SDG'
           x-context: schema.org/Accommodation
-          type: string
-          description: Verwijzing naar een locatie boeking in de agendaservice (dus niet de locatie zelf)
+          description: 'Verwijzing(uri) naar de **Locatie** in het SDG, bij ophalen kan de query parameter &extend[]=locatie worden gebruikt om een volledig object op te halen.'
         ambtenaar:
-          type: string
+          $ref: '#/components/schemas/Overige-Objecten_SDG'
           x-context: schema.conduction.nl/assent
-          description: Verwijzing naar een ambtenaar boeking in de agendaservice (dus niet de ambtenaar zelf)
+          description: 'Verwijzing(uri) naar de **Ambtenaar** in het SDG, bij ophalen kan de query parameter &extend[]=ambtenaarworden gebruikt om een volledig object op te halen.'
+        status:
+          type: string
+          enum:
+            - concept
+            - reported
+            - confirmed
+            - executed
+            - cancelled
+          example: concept
+          default: concept
         moment:
           type: string
           format: date-time
@@ -120,65 +135,297 @@ components:
           description: De bij dit huwelijk gekozen extra producten
           items:
             type: string
-        getuigen:
-          description: 'De bij dit huwelijk behorende getuigen, minimaal 1 en maximaal 2 per partner'
-          type: array
-          items:
-            type: object
-            properties:
-              partner:
-                x-context: schema.conduction.nl/assent
-                type: string
-                description: |-
-                  De partner waarvoor deze getuigen geteuige is, een getuige kan maar voor één partner getuigen en iedere partner kan maximaal 2 getuigen hebben. Voor een valide huwelijk heeft elke partner minimaal één getuigen nodig.
-                  Partner wordt hierbij aangeduide al een instemming
-              instemming:
-                x-context: schema.conduction.nl/assent
-                type: string
-                description: De instemming van deze getuige in het IRC
         checklist:
           type: object
           properties:
             partners:
-              type: string
-              description: Geeft true indien geen problemen of een string indien wel een probleem. Daarbij bevat de string dan de probleem beschrijving
-              example: nog niet alle partners hebben ingestemd met het huwelijk
-            locatie:
-              type: string
-              description: Geeft true indien geen problemen of een string indien wel een probleem. Daarbij bevat de string dan de probleem beschrijving
-              example: u heeft nog geen locatie gekozen
-            ambetenaar:
-              type: string
-              description: Geeft true indien geen problemen of een string indien wel een probleem. Daarbij bevat de string dan de probleem beschrijving
-              example: u heeft nog geen trouw ambtenaar gekozen
-            moment:
-              type: string
-              description: Geeft true indien geen problemen of een string indien wel een probleem. Daarbij bevat de string dan de probleem beschrijving
-              example: u heeft nog geen moment van huwelijk/partnerschap gekozen
-            producten:
-              type: string
-              description: Geeft true indien geen problemen of een string indien wel een probleem. Daarbij bevat de string dan de probleem beschrijving
+              type: object
+              description: |-
+                Onder partners word gecontroleerd op:
+                - Leeftijd partner 1 (ouder dan 18 op trouwdatum)
+                - Leeftijd partner 2 (ouder dan 18 op trouwdatum)
+                - Bevestiging partner 1 
+                - Bevestiging partner 2 
+                - Aantal partners (minimaal 2, maximaal 2)
+                - Huwelijksstaat partner 1 (geen huidige partner, WORD PAS GECONTROLEERD NA BEVESTIGING BIJDE PARTNERS)
+                - Huwelijksstaat partner 2 (geen huidige partner, WORD PAS GECONTROLEERD NA BEVESTIGING BIJDE PARTNERS)
+                - Bloedverwantschap (geen fammilie in de tweede graad)
+              properties:
+                result:
+                  type: boolean
+                display:
+                  type: string
             getuigen:
-              type: string
-              description: Geeft true indien geen problemen of een string indien wel een probleem. Daarbij bevat de string dan de probleem beschrijving
-              example: een van de partners heeft te weinig getuigen
+              type: object
+              description: |-
+                Onder getuigen word gecontrolleerd of:
+                - Heeft iedere partner minimaal 1 getuigen
+                - Heeft iedere partner maximaal 2 getuigen
+                - Hebben alle getuigen ingestemd
+              properties:
+                result:
+                  type: boolean
+                display:
+                  type: string
+            ambtenaar:
+              type: object
+              description: |-
+                Onder ambtenaar wordt er gecontroleerd op:
+                - Is er een trouwambtenaar aan het huwelijk gekoppeld
+                - Is deze gereserveerd en beschickbaar
+                - Heeft deze bevestigd
+              properties:
+                result:
+                  type: boolean
+                display:
+                  type: string
+            moment:
+              type: object
+              description: |-
+                Onder moment wordt er gecontroleerd op:
+                - Is het moment minimaal 2 weken in de toekomst
+                - Is het moment maximaal 1 jaar in de toekomst
+                - Vanaf de status "melding" worden deze controles niet meer geupdate
+              properties:
+                result:
+                  type: boolean
+                display:
+                  type: string
+            producten:
+              type: object
+              description: |-
+                Onder producten word gecontroleerd op:
+                - Niks, producten zijn optioneel
+              properties:
+                result:
+                  type: boolean
+                display:
+                  type: string
             order:
-              type: string
-              description: Geeft true indien geen problemen of een string indien wel een probleem. Daarbij bevat de string dan de probleem beschrijving
-              example: u heeft uw huwelijk nog niet betaald
+              type: object
+              description: |-
+                Onder order wordt er gecontroleerd op:
+                - Is er een order
+                - Is het totaal van de order gelijk aan het totaal van het huwelijks
+                - Is de order betaald
+              properties:
+                result:
+                  type: boolean
+                display:
+                  type: string
             zaak:
-              type: string
-              description: Geeft true indien geen problemen of een string indien wel een probleem. Daarbij bevat de string dan de probleem beschrijving
+              type: object
+              description: |-
+                Onder zaak wordt gecontroleerd op:
+                - afhankenlijk van gemeentenlijke configuratie
+              properties:
+                result:
+                  type: boolean
+                dispay:
+                  type: string
+                  example: Uw heeft uw huwelijk betaald
           readOnly: true
         order:
           type: string
-          description: Verwijzing naar de bij dit huwelijk horende order in het ORC
+          description: 'Bij het melden van het voorgenomen huwelijk word een order gecreërd. Dit order bevat ook de betaallink. , bij ophalen kan de query parameter &extend[]=order worden gebruikt om een volledig object op te halen.'
+          format: url
+          example: 'https://www.zuiddrecht.nl/api/orc/vi/ea16b2d6-3e0f-43d7-abf2-069569b2ee54'
+          readOnly: true
         zaak:
           type: string
-          description: Verwijzing naar het bij dit huwelijk horende zaak in het ZRC
-        instemmingGemeente:
+          description: 'Een zaak bevat de ZRC verwijzing naar een zaak, mits de gemeente deze als verplicht heet ingecalculeerd. De zaak wordt onderwater autotmatisch gecreerd. , bij ophalen kan de query parameter &extend[]=zaak worden gebruikt om een volledig object op te halen.'
+          format: url
+          example: 'https://www.zuiddrecht.nl/api/zrc/vi/ea16b2d6-3e0f-43d7-abf2-069569b2ee54'
+          readOnly: true
+        kosten:
           type: string
+          description: 'Een ISO kosten opgaaf voor het huwelijk bestaande uit een drie cijferige valuta code gevold door het bedrag zonder decimalen e.g. EUR 150 voor € 1,50'
+          example: EUR 150
+          readOnly: true
+        instemmingGemeente:
+          $ref: '#/components/schemas/Overige-Objecten_Assent'
           description: De verwijzing van de isntemming van de gemeente met het huwelijk of parterschap
+    Overige-Objecten_Assent:
+      title: Assent
+      x-stoplight:
+        id: rbt37bbzffjy8
+      type: object
+      description: 'Bassed on https://github.com/ConductionNL/instemming-registratie-component/blob/master/api/src/Entity/Assent.php'
+      x-context: schema.conduction.nl/assent
+      properties:
+        id:
+          type: string
+        token:
+          type: string
+          description: A secret token used to validate the assent
+          maxLength: 255
+        name:
+          type: string
+          description: The name of this assend is displayed as a title to end users and should make clear what they arre assending to
+          maxLength: 255
+        description:
+          type: string
+          description: The description of this assend is displayed to end users as aditional information and should make clear what they arre assending to
+        request:
+          type: string
+          maxLength: 255
+          description: The request that this assent applies to
+        forwardUrl;:
+          type: string
+          description: The request that this assent applies to
+          maxLength: 255
+        property:
+          type: string
+          description: The property of a request that this assent applies to e.g. parner in meldingvoorgenomenhuwelijk
+          maxLength: 255
+        process:
+          type: string
+          description: The process that this assent originated from
+          maxLength: 255
+        contact:
+          type: string
+          description: The contact that this assent applies to
+          maxLength: 255
+        person:
+          type: string
+          maxLength: 255
+          description: The person that this assent applies to
+        status:
+          type: string
+          maxLength: 255
+          enum:
+            - requested
+            - granted
+            - submitted
+            - declined
+            - cancelled
+            - withdrawn
+          description: 'The status of this assent e.g. requested, granted, declined, cancelled, withdrawn'
+        requester:
+          type: string
+          description: The organisation (RSIN) or person (BSN) that is responsible for making this assent
+          maxLength: 255
+        revocable:
+          type: boolean
+          default: true
       required:
-        - id
-        - type
+        - name
+        - requester
+    Overige-Objecten_SDG:
+      title: SDGProduct
+      x-stoplight:
+        id: g5xwvjqpq6rsj
+      type: object
+      properties:
+        uuid:
+          type: string
+        upnLabel:
+          type: string
+        upnUri:
+          type: string
+        versie:
+          type: string
+        publicatieDatum:
+          type: string
+        productAanwezig:
+          type: boolean
+        productValtOnder:
+          type: string
+        verantwoordelijkeOrganisatie:
+          $ref: '#/components/schemas/Overige-Objecten_SDGLocatie'
+        bevoegdeOrganisatie:
+          $ref: '#/components/schemas/Overige-Objecten_SDGLocatie'
+        catalogus:
+          type: string
+        locaties:
+          type: array
+          items: {}
+        doelgroep:
+          type: string
+        vertalingen:
+          type: array
+          items:
+            $ref: '#/components/schemas/Overige-Objecten_SDGVertaling'
+        gerelateerdeProducten:
+          type: array
+          items:
+            $ref: '#/components/schemas/Overige-Objecten_SDG'
+      x-context: schema.conduction.nl/SDGProduct
+    Overige-Objecten_SDGLocatie:
+      title: SDGLocatie
+      x-stoplight:
+        id: w5oyec08nern0
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+        owmsIdentifier:
+          type: string
+        owmsPrefLabel:
+          type: string
+        owmsEndDate:
+          type: string
+          format: date-time
+    Overige-Objecten_SDGVertaling:
+      title: SDGVertaling
+      x-stoplight:
+        id: qiuvs12h4elow
+      type: object
+      properties:
+        taal:
+          type: string
+        productTitelDecentraal:
+          type: string
+        specifiekeTekst:
+          type: string
+        procedureBeschrijving:
+          type: string
+        kostenEnBetaalmethoden:
+          type: string
+        uitersteTermijn:
+          type: string
+        conditions:
+          type: string
+        bezwaarEnBeroep:
+          type: string
+        notice:
+          type: string
+        decentraleProcedureLink:
+          type: string
+        vereisten:
+          type: string
+        bewijs:
+          type: string
+        contact:
+          type: string
+        verwijzingLinks:
+          type: array
+          items:
+            type: object
+            properties:
+              label:
+                type: string
+              url:
+                type: string
+                format: uri
+        synonyms:
+          type: array
+          items:
+            type: object
+            properties:
+              synonym:
+                type: string
+        wtdBijGeenReactie:
+          type: string
+        datumWijziging:
+          type: string
+          format: date-time
+        deskMemo:
+          type: string
+        productAanwezigToelichting:
+          type: string
+        productValtOnderToelichting:
+          type: string
+      description: ''
