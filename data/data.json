@@ -7,16 +7,16 @@
                "partners":[
                   {
                      "token":"string",
-                     "name":"string",
-                     "description":"string",
-                     "request":"string",
-                     "forwardUrl;":"string",
-                     "property":"string",
-                     "process":"string",
-                     "contact":"string",
-                     "person":"string",
+                     "name":"Partner",
+                     "description":"Partner van ..",
+                     "request": null,
+                     "forwardUrl;": null,
+                     "property": null,
+                     "process": null,
+                     "contact": "partner_klant_id",
+                     "person": null,
                      "status":"requested",
-                     "requester":"string",
+                     "requester":"019655344",
                      "revocable":true
                   }
                ],
@@ -24,253 +24,72 @@
                   {
                      "id":"string",
                      "token":"string",
-                     "name":"string",
-                     "description":"string",
-                     "request":"string",
-                     "forwardUrl;":"string",
-                     "property":"string",
-                     "process":"string",
-                     "contact":"string",
+                     "name":"Getuige",
+                     "description":"Getuige voor huwelijk",
+                     "request": null,
+                     "forwardUrl;": null,
+                     "property": null,
+                     "process": null,
+                     "contact": {
+                     },
                      "person":"string",
-                     "status":"requested",
-                     "requester":"string",
+                     "person": null,
+                     "requester":"019655344",
                      "revocable":true
                   }
                ],
-               "type":{
-                  "uuid":"string",
-                  "upnLabel":"string",
-                  "upnUri":"string",
-                  "versie":"string",
-                  "publicatieDatum":"string",
-                  "productAanwezig":true,
-                  "productValtOnder":"string",
-                  "verantwoordelijkeOrganisatie":{
-                     "id":"string",
-                     "url":"string",
-                     "owmsIdentifier":"string",
-                     "owmsPrefLabel":"string",
-                     "owmsEndDate":"2019-08-24T14:15:22"
-                  },
-                  "bevoegdeOrganisatie":{
-                     "id":"string",
-                     "url":"string",
-                     "owmsIdentifier":"string",
-                     "owmsPrefLabel":"string",
-                     "owmsEndDate":"2019-08-24T14:15:22"
-                  },
-                  "catalogus":"string",
-                  "locaties":[
-                     "url ?"
-                  ],
-                  "doelgroep":"string"
-               },
-               "ceremonie":{
-                  "uuid":"string",
-                  "upnLabel":"string",
-                  "upnUri":"string",
-                  "versie":"string",
-                  "publicatieDatum":"string",
-                  "productAanwezig":true,
-                  "productValtOnder":"string",
-                  "verantwoordelijkeOrganisatie":{
-                     "id":"string",
-                     "url":"string",
-                     "owmsIdentifier":"string",
-                     "owmsPrefLabel":"string",
-                     "owmsEndDate":"2019-08-24T14:15:22"
-                  },
-                  "bevoegdeOrganisatie":{
-                     "id":"string",
-                     "url":"string",
-                     "owmsIdentifier":"string",
-                     "owmsPrefLabel":"string",
-                     "owmsEndDate":"2019-08-24T14:15:22"
-                  },
-                  "catalogus":"string",
-                  "locaties":[
-                     "url ?"
-                  ],
-                  "doelgroep":"string",
-                  "vertalingen":[
-                     {
-                        "verwijzingLinks":[
-                           
-                        ],
-                        "synonyms":[
-                           
-                        ]
-                     }
-                  ],
-                  "gerelateerdeProducten":[
-                     {
-                        
-                     }
-                  ]
-               },
-               "locatie":{
-                  "uuid":"string",
-                  "upnLabel":"string",
-                  "upnUri":"string",
-                  "versie":"string",
-                  "publicatieDatum":"string",
-                  "productAanwezig":true,
-                  "productValtOnder":"string",
-                  "verantwoordelijkeOrganisatie":{
-                     "id":"string",
-                     "url":"string",
-                     "owmsIdentifier":"string",
-                     "owmsPrefLabel":"string",
-                     "owmsEndDate":"2019-08-24T14:15:22"
-                  },
-                  "bevoegdeOrganisatie":{
-                     "id":"string",
-                     "url":"string",
-                     "owmsIdentifier":"string",
-                     "owmsPrefLabel":"string",
-                     "owmsEndDate":"2019-08-24T14:15:22"
-                  },
-                  "catalogus":"string",
-                  "locaties":[
-                     "url ?"
-                  ],
-                  "doelgroep":"string",
-                  "vertalingen":[
-                     {
-                        "verwijzingLinks":[
-                           
-                        ],
-                        "synonyms":[
-                           
-                        ]
-                     }
-                  ],
-                  "gerelateerdeProducten":[
-                     {
-                        
-                     }
-                  ]
-               },
-               "ambtenaar":{
-                  "uuid":"string",
-                  "upnLabel":"string",
-                  "upnUri":"string",
-                  "versie":"string",
-                  "publicatieDatum":"string",
-                  "productAanwezig":true,
-                  "productValtOnder":"string",
-                  "verantwoordelijkeOrganisatie":{
-                     "id":"string",
-                     "url":"string",
-                     "owmsIdentifier":"string",
-                     "owmsPrefLabel":"string",
-                     "owmsEndDate":"2019-08-24T14:15:22"
-                  },
-                  "bevoegdeOrganisatie":{
-                     "id":"string",
-                     "url":"string",
-                     "owmsIdentifier":"string",
-                     "owmsPrefLabel":"string",
-                     "owmsEndDate":"2019-08-24T14:15:22"
-                  },
-                  "catalogus":"string",
-                  "locaties":[
-                     "url ?"
-                  ],
-                  "doelgroep":"string",
-                  "vertalingen":[
-                     {
-                        "verwijzingLinks":[
-                           
-                        ],
-                        "synonyms":[
-                           
-                        ]
-                     }
-                  ],
-                  "gerelateerdeProducten":[
-                     {
-                        
-                     }
-                  ]
-               },
+               "type": "product_huwelijk_id"
+               "ceremonie": "product_ceremonie_eenvoudig_id",
+               "locatie": "product_locatie_stadhuis_id",
+               "ambtenaar": "product_amtbenaar_1_id",,
                "status":"concept",
                "moment":"2019-08-24T14:15:22",
                "producten":[
-                  {
-                     "uuid":"string",
-                     "upnLabel":"string",
-                     "upnUri":"string",
-                     "versie":"string",
-                     "publicatieDatum":"string",
-                     "productAanwezig":true,
-                     "productValtOnder":"string",
-                     "verantwoordelijkeOrganisatie":{
-                        
-                     },
-                     "bevoegdeOrganisatie":{
-                        
-                     },
-                     "catalogus":"string",
-                     "locaties":[
-                        null
-                     ],
-                     "doelgroep":"string",
-                     "vertalingen":[
-                        {
-                           
-                        }
-                     ],
-                     "gerelateerdeProducten":[
-                        {
-                           
-                        }
-                     ]
-                  }
+                 "product_trouwboekje_id"
                ],
                "checklist":{
                   "partners":{
-                     "result":true,
-                     "display":"string"
+                     "result":false,
+                     "display":"Parter is verzocht toe te stemmen"
                   },
                   "getuigen":{
-                     "result":true,
-                     "display":"string"
+                     "result":false,
+                     "display":"Getuige is verzocht toe te stemmen"
                   },
                   "ambtenaar":{
                      "result":true,
-                     "display":"string"
+                     "display": "Ambtenaar gereserveerd"
                   },
                   "moment":{
                      "result":true,
-                     "display":"string"
+                     "display": "Datum van ceremonie gereserveerd"
                   },
                   "producten":{
                      "result":true,
-                     "display":"string"
+                     "display": "Producten besteld"
                   },
                   "order":{
                      "result":true,
-                     "display":"string"
+                     "display":"Order is geplaatst"
                   },
                   "zaak":{
                      "result":true,
-                     "dispay":"Uw heeft uw huwelijk betaald"
+                     "display":"Uw heeft uw huwelijk betaald"
                   }
                },
                "instemmingGemeente":{
                   "token":"string",
-                  "name":"string",
-                  "description":"string",
-                  "request":"string",
-                  "forwardUrl;":"string",
-                  "property":"string",
-                  "process":"string",
-                  "contact":"string",
-                  "person":"string",
-                  "status":"requested",
-                  "requester":"string",
-                  "revocable":true
+                  "name":"Instemmings gemeente",
+                     "description":"Gemeente Utrecht",
+                     "request": null,
+                     "forwardUrl;": null,
+                     "property": null,
+                     "process": null,
+                     "contact": "gemeente id?",
+                     "person": null,
+                     "status":"requested",
+                     "requester":"471608130",
+                     "revocable":true
                }
             }
          }
