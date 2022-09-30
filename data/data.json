@@ -1,7 +1,7 @@
 {
    "collection":"https://raw.githubusercontent.com/Huwelijksplanner/TrouwService/main/OAS.yaml",
    "schemas":{
-      "Huwelijk":[
+      "huwelijk":[
          {
             "properties":{
                "partners":[
