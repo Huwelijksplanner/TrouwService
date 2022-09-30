@@ -71,9 +71,6 @@ paths:
     delete:
       summary: Verwijder een huwelijk
       operationId: delete-huwelijken-id
-      responses:
-        '200':
-          description: OK
     patch:
       summary: ''
       operationId: patch-huwelijken-id
@@ -108,27 +105,27 @@ components:
           description: 'De in dit huwelijk betrokken partners, bestaande uit hun instemmming (Assent) en getuigen.'
           type: array
           items:
-            $ref: '#/components/schemas/Overige-Objecten_Assent'
+            $ref: ./Overige-Objecten.yaml#/components/schemas/Assent
         getuigen:
           type: array
           maxItems: 4
           uniqueItems: true
           items:
-            $ref: '#/components/schemas/Overige-Objecten_Assent'
+            $ref: ./Overige-Objecten.yaml#/components/schemas/Assent
         type:
-          $ref: '#/components/schemas/Overige-Objecten_SDG'
+          $ref: ./Overige-Objecten.yaml#/components/schemas/SDG
           description: 'Het juridische type van dit huwelijk zo als opgehaald uit de SDG catalogus, zijnde huwelijk, parnterschap of omzetting'
           x-context: schema.conduction.nl/SDGProduct
         ceremonie:
-          $ref: '#/components/schemas/Overige-Objecten_SDG'
+          $ref: ./Overige-Objecten.yaml#/components/schemas/SDG
           description: 'De cermonie (manier) waarop het huwelijk wordt volgrokken. Bijvoorbeeld gratis, flits, eenvoudig of uitgebreid.'
           x-context: schema.conduction.nl/SDGProduct
         locatie:
-          $ref: '#/components/schemas/Overige-Objecten_SDG'
+          $ref: ./Overige-Objecten.yaml#/components/schemas/SDG
           x-context: schema.org/Accommodation
           description: 'Verwijzing(uri) naar de **Locatie** in het SDG, bij ophalen kan de query parameter &extend[]=locatie worden gebruikt om een volledig object op te halen.'
         ambtenaar:
-          $ref: '#/components/schemas/Overige-Objecten_SDG'
+          $ref: ./Overige-Objecten.yaml#/components/schemas/SDG
           x-context: schema.conduction.nl/assent
           description: 'Verwijzing(uri) naar de **Ambtenaar** in het SDG, bij ophalen kan de query parameter &extend[]=ambtenaarworden gebruikt om een volledig object op te halen.'
         status:
@@ -149,7 +146,7 @@ components:
           type: array
           description: De bij dit huwelijk gekozen extra producten
           items:
-            $ref: '#/components/schemas/Overige-Objecten_SDG'
+            $ref: ./Overige-Objecten.yaml#/components/schemas/SDG
         checklist:
           type: object
           properties:
@@ -236,7 +233,7 @@ components:
               properties:
                 result:
                   type: boolean
-                dispay:
+                display:
                   type: string
                   example: Uw heeft uw huwelijk betaald
           readOnly: true
@@ -258,189 +255,5 @@ components:
           example: EUR 150
           readOnly: true
         instemmingGemeente:
-          $ref: '#/components/schemas/Overige-Objecten_Assent'
+          $ref: ./Overige-Objecten.yaml#/components/schemas/Assent
           description: De verwijzing van de isntemming van de gemeente met het huwelijk of parterschap
-    Overige-Objecten_Assent:
-      title: Assent
-      x-stoplight:
-        id: rbt37bbzffjy8
-      type: object
-      description: 'Bassed on https://github.com/ConductionNL/instemming-registratie-component/blob/master/api/src/Entity/Assent.php'
-      x-context: schema.conduction.nl/assent
-      properties:
-        id:
-          type: string
-        token:
-          type: string
-          description: A secret token used to validate the assent
-          maxLength: 255
-        name:
-          type: string
-          description: The name of this assend is displayed as a title to end users and should make clear what they arre assending to
-          maxLength: 255
-        description:
-          type: string
-          description: The description of this assend is displayed to end users as aditional information and should make clear what they arre assending to
-        request:
-          type: string
-          maxLength: 255
-          description: The request that this assent applies to
-        forwardUrl;:
-          type: string
-          description: The request that this assent applies to
-          maxLength: 255
-        property:
-          type: string
-          description: The property of a request that this assent applies to e.g. parner in meldingvoorgenomenhuwelijk
-          maxLength: 255
-        process:
-          type: string
-          description: The process that this assent originated from
-          maxLength: 255
-        contact:
-          type: string
-          description: The contact that this assent applies to
-          maxLength: 255
-        person:
-          type: string
-          maxLength: 255
-          description: The person that this assent applies to
-        status:
-          type: string
-          maxLength: 255
-          enum:
-            - requested
-            - granted
-            - submitted
-            - declined
-            - cancelled
-            - withdrawn
-          description: 'The status of this assent e.g. requested, granted, declined, cancelled, withdrawn'
-        requester:
-          type: string
-          description: The organisation (RSIN) or person (BSN) that is responsible for making this assent
-          maxLength: 255
-        revocable:
-          type: boolean
-          default: true
-      required:
-        - name
-        - requester
-    Overige-Objecten_SDG:
-      title: SDGProduct
-      x-stoplight:
-        id: g5xwvjqpq6rsj
-      type: object
-      properties:
-        uuid:
-          type: string
-        upnLabel:
-          type: string
-        upnUri:
-          type: string
-        versie:
-          type: string
-        publicatieDatum:
-          type: string
-        productAanwezig:
-          type: boolean
-        productValtOnder:
-          type: string
-        verantwoordelijkeOrganisatie:
-          $ref: '#/components/schemas/Overige-Objecten_SDGLocatie'
-        bevoegdeOrganisatie:
-          $ref: '#/components/schemas/Overige-Objecten_SDGLocatie'
-        catalogus:
-          type: string
-        locaties:
-          type: array
-          items: {}
-        doelgroep:
-          type: string
-        vertalingen:
-          type: array
-          items:
-            $ref: '#/components/schemas/Overige-Objecten_SDGVertaling'
-        gerelateerdeProducten:
-          type: array
-          items:
-            $ref: '#/components/schemas/Overige-Objecten_SDG'
-      x-context: schema.conduction.nl/SDGProduct
-    Overige-Objecten_SDGLocatie:
-      title: SDGLocatie
-      x-stoplight:
-        id: w5oyec08nern0
-      type: object
-      properties:
-        id:
-          type: string
-        url:
-          type: string
-        owmsIdentifier:
-          type: string
-        owmsPrefLabel:
-          type: string
-        owmsEndDate:
-          type: string
-          format: date-time
-    Overige-Objecten_SDGVertaling:
-      title: SDGVertaling
-      x-stoplight:
-        id: qiuvs12h4elow
-      type: object
-      properties:
-        taal:
-          type: string
-        productTitelDecentraal:
-          type: string
-        specifiekeTekst:
-          type: string
-        procedureBeschrijving:
-          type: string
-        kostenEnBetaalmethoden:
-          type: string
-        uitersteTermijn:
-          type: string
-        conditions:
-          type: string
-        bezwaarEnBeroep:
-          type: string
-        notice:
-          type: string
-        decentraleProcedureLink:
-          type: string
-        vereisten:
-          type: string
-        bewijs:
-          type: string
-        contact:
-          type: string
-        verwijzingLinks:
-          type: array
-          items:
-            type: object
-            properties:
-              label:
-                type: string
-              url:
-                type: string
-                format: uri
-        synonyms:
-          type: array
-          items:
-            type: object
-            properties:
-              synonym:
-                type: string
-        wtdBijGeenReactie:
-          type: string
-        datumWijziging:
-          type: string
-          format: date-time
-        deskMemo:
-          type: string
-        productAanwezigToelichting:
-          type: string
-        productValtOnderToelichting:
-          type: string
-      description: ''
