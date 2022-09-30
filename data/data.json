@@ -30,9 +30,7 @@
                      "forwardUrl;": null,
                      "property": null,
                      "process": null,
-                     "contact": {
-                     },
-                     "person":"string",
+                     "contact": "getuige_klant_id",
                      "person": null,
                      "requester":"019655344",
                      "revocable":true
