@@ -4,15 +4,8 @@
       "huwelijk":[
          {
             "properties":{
-               "type": "product_huwelijk_id",
-               "ceremonie": "product_ceremonie_eenvoudig_id",
-               "locatie": "product_locatie_stadhuis_id",
-               "ambtenaar": "product_amtbenaar_1_id",
                "status":"concept",
                "moment":"2019-08-24T14:15:22",
-               "producten":[
-                 "product_trouwboekje_id"
-               ],
                "checklist":{
                   "partners":{
                      "result":false,
