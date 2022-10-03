@@ -4,38 +4,6 @@
       "huwelijk":[
          {
             "properties":{
-               "partners":[
-                  {
-                     "token":"string",
-                     "name":"Partner",
-                     "description":"Partner van ..",
-                     "request": null,
-                     "forwardUrl;": null,
-                     "property": null,
-                     "process": null,
-                     "contact": "partner_klant_id",
-                     "person": null,
-                     "status":"requested",
-                     "requester":"019655344",
-                     "revocable":true
-                  }
-               ],
-               "getuigen":[
-                  {
-                     "id":"string",
-                     "token":"string",
-                     "name":"Getuige",
-                     "description":"Getuige voor huwelijk",
-                     "request": null,
-                     "forwardUrl;": null,
-                     "property": null,
-                     "process": null,
-                     "contact": "getuige_klant_id",
-                     "person": null,
-                     "requester":"019655344",
-                     "revocable":true
-                  }
-               ],
                "type": "product_huwelijk_id",
                "ceremonie": "product_ceremonie_eenvoudig_id",
                "locatie": "product_locatie_stadhuis_id",
@@ -74,20 +42,6 @@
                      "result":true,
                      "display":"Uw heeft uw huwelijk betaald"
                   }
-               },
-               "instemmingGemeente":{
-                  "token":"string",
-                  "name":"Instemmings gemeente",
-                     "description":"Gemeente Utrecht",
-                     "request": null,
-                     "forwardUrl;": null,
-                     "property": null,
-                     "process": null,
-                     "contact": "gemeente id?",
-                     "person": null,
-                     "status":"requested",
-                     "requester":"471608130",
-                     "revocable":true
                }
             }
          }
