@@ -104,23 +104,29 @@ components:
           x-context: schema.conduction.nl/assent
           description: 'De in dit huwelijk betrokken partners, bestaande uit hun instemmming (Assent) en getuigen.'
           type: array
+          items: {}
         getuigen:
           x-context: schema.conduction.nl/assent
           type: array
           maxItems: 4
           uniqueItems: true
+          items: {}
         type:
           description: 'Het juridische type van dit huwelijk zo als opgehaald uit de SDG catalogus, zijnde huwelijk, parnterschap of omzetting'
           x-context: schema.conduction.nl/SDGProduct
+          type: string
         ceremonie:
           description: 'De cermonie (manier) waarop het huwelijk wordt volgrokken. Bijvoorbeeld gratis, flits, eenvoudig of uitgebreid.'
           x-context: schema.conduction.nl/SDGProduct
+          type: string
         locatie:
-          x-context: schema.org/Accommodation
+          x-context: schema.conduction.nl/SDGProduct
           description: 'Verwijzing(uri) naar de **Locatie** in het SDG, bij ophalen kan de query parameter &extend[]=locatie worden gebruikt om een volledig object op te halen.'
+          type: string
         ambtenaar:
-          x-context: schema.conduction.nl/assent
+          x-context: schema.conduction.nl/SDGProduct
           description: 'Verwijzing(uri) naar de **Ambtenaar** in het SDG, bij ophalen kan de query parameter &extend[]=ambtenaarworden gebruikt om een volledig object op te halen.'
+          type: string
         status:
           type: string
           enum:
@@ -139,6 +145,7 @@ components:
           type: array
           description: De bij dit huwelijk gekozen extra producten
           x-context: schema.conduction.nl/SDGProduct
+          items: {}
         checklist:
           type: object
           properties:
