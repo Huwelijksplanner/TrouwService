@@ -1,0 +1,7 @@
+{
+  "name": "@conductionnl/trouw-service",
+  "version": "1.0.0",
+  "private": true,
+  "description": "OpenAPI Specification voor de TrouwService",
+  "author": "Conduction B.V."
+}
