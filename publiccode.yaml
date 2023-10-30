@@ -1,40 +1,62 @@
-publiccodeYmlVersion: "0.1"
-
-name: "Trouw Serivice"
-url: "https://github.com/Huwelijksplanner/TrouwService"
-releaseDate: "2022-06-04"
-
-softwareType: configurationFiles
-
-inputTypes:
-  - application/json
-  - application/xml
-
-outputTypes:
-  - application/json
-
-platforms:
-  - web
-  
 categories:
-  - collaboration
-  - it-development
-  
-developmentStatus: beta
-
-description:
-  nl:
-    shortDescription: "Een API voor services voor trouwen en partnerschap."
-    documentation: 'https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/Huwelijksplanner/TrouwService/main/OAS.yaml&nocors'
-    apiDocumentation: 'https://raw.githubusercontent.com/Huwelijksplanner/TrouwService/main/OAS.yaml'
-    # testDataLocation: 'https://raw.githubusercontent.com/Huwelijksplanner/TrouwService/main/data/data.json'
-  en:
-    shortDescription: "An API for services around merrage and partnerships."
-    documentation: 'https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/Huwelijksplanner/TrouwService/main/OAS.yaml&nocors'
-    apiDocumentation: 'https://raw.githubusercontent.com/Huwelijksplanner/TrouwServicev/main/OAS.yaml'
-    # testDataLocation: 'https://raw.githubusercontent.com/Huwelijksplanner/TrouwService/main/data/data.json'
-
+- collaboration
+- it-development
 dependsOn:
   open:
-    - name: common-gateway
-      versionMin: 1.0.0
+  - name: common-gateway
+    versionMin: 1.0.0
+description:
+  en:
+    apiDocumentation: https://raw.githubusercontent.com/Huwelijksplanner/TrouwServicev/main/OAS.yaml
+    awards: []
+    documentation: https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/Huwelijksplanner/TrouwService/main/OAS.yaml&nocors
+    features: []
+    genericName: ''
+    localisedName: ''
+    longDescription: ''
+    screenshots: []
+    shortDescription: An API for services around merrage and partnerships.
+    videos: []
+  nl:
+    apiDocumentation: https://raw.githubusercontent.com/Huwelijksplanner/TrouwService/main/OAS.yaml
+    documentation: https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/Huwelijksplanner/TrouwService/main/OAS.yaml&nocors
+    shortDescription: Een API voor services voor trouwen en partnerschap.
+developmentStatus: beta
+inputTypes:
+- application/json
+- application/xml
+landingURL: ''
+legal:
+  authorsFile: ''
+  license: ''
+  mainCopyrightOwner: ''
+  repoOwner: ''
+localisation:
+  availableLanguages:
+  - en
+  localisationReady: false
+maintenance:
+  contacts: []
+  contractors: []
+  type: none
+name: TrouwService
+nl:
+  vng:
+    commonground: []
+    gemma: []
+organisation:
+  description: De huwelijksplanner van de gemeente Utrecht voor Commonground
+  logo: https://avatars.githubusercontent.com/u/106860603?v=4
+  name: Huwelijksplanner
+  url: Huwelijksplanner
+outputTypes:
+- application/json
+platforms:
+- web
+publiccodeYmlVersion: '0.1'
+releaseDate: '2022-06-04'
+roadmap: ''
+softwareType: configurationFiles
+softwareVersion: ''
+url: https://github.com/Huwelijksplanner/TrouwService
+usedBy: []
